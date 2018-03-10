@@ -1,0 +1,13 @@
+{
+  "verbose": 0,
+  "watch": {
+    "enable": true,
+    "delay": 3,
+    "interval": 5,
+    "log": "./log.txt"
+  },
+  "notify": {
+    "type": "slack-webhook",
+    "url": "https://hooks.slack.com/services/T00000000/B00000000/xxxxxxxxxxxxxxxxxxxxxxxx"
+  }
+}

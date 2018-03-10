@@ -1,18 +1,21 @@
 #!/usr/bin/node --experimental-modules
 
+import EthOSHelperConfig from "./EthOSHelperConfig";
 import EthOSWatch from "./lib/EthOSWatch";
 
-const watch = new EthOSWatch({
-  notifyURL: "", // Slack WebHookURL: "https://hooks.slack.com/services/T00000000/B00000000/xxxxxxxxxxxxxxxxxxxxxxxx";
-  verbose: 0,
-});
+const conf = new EthOSHelperConfig().json;
+const watch = new EthOSWatch(conf);
 
-setTimeout(() => {
+if (conf.watch.enable) {
+  setTimeout(() => {
+    if (conf.verbose) {
+      console.log("EthOSHelper watch start");
+    }
+    watch.start();
+  }, conf.watch.delay * 1000 * 60);
+}
 
-  console.log("EthOSHelper start watch");
-  watch.start();
-
-}, 1000 * 60 * 5); // 5 min after
-
-console.log("EthOSHelper running");
+if (conf.verbose) {
+  console.log("EthOSHelper start");
+}
 
