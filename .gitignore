@@ -6,4 +6,5 @@ node_modules
 *.mov
 *.mp
 
+default.conf
 
