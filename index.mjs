@@ -1,6 +1,6 @@
 #!/usr/bin/node --experimental-modules
 
-import EthOSHelperConfig from "./EthOSHelperConfig";
+import EthOSHelperConfig from "./lib/EthOSHelperConfig";
 import EthOSWatch from "./lib/EthOSWatch";
 
 const conf = new EthOSHelperConfig().json;
