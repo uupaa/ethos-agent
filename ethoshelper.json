@@ -4,7 +4,7 @@
     "enable": true,
     "delay": 3,
     "interval": 5,
-    "log": "./log.txt"
+    "log": "/tmp/ethoshelper.log"
   },
   "notify": {
     "type": "slack-webhook",

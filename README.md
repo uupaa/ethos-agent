@@ -2,19 +2,18 @@
 
 ## Prepare
 
-Download and install [node.js](https://nodejs.org/en/download/current/) (Linux Binaries x64 64-bit version).
-
 ```sh
+sudo apt-get-ubuntu install node
 mkdir ~/tools
 cd ~/tools
-git clone https://github.com/uupaa/EthOSHelper.js.git
-cd EthOSHelper.js
+git clone https://github.com/uupaa/EthOSHelper.git
+cd EthOSHelper
 chmod +x index.mjs
 ```
 
 ## Update config file
 
-`ethoshelper.json` is EthOSHelper.js congiguration file.
+`ethoshelper.json` is EthOSHelper congiguration file.
 
 1. Update `watch.delay` and `watch.interval` values.
 2. Update `notify.url` value.
@@ -27,7 +26,7 @@ chmod +x index.mjs
     "enable": true, // watch enable
     "delay": 3,     // watch start minutes (at after OS booted)
     "interval": 5,  // watch interval minutes
-    "log": "./log.txt"
+    "log": "/tmp/ethoshelper.log"
   },
   "notify": {
     "type": "slack-webhook",
@@ -45,7 +44,7 @@ chmod +x index.mjs
   #
   # By default this script does nothing.
 
-+ /usr/bin/node --experimental-modules /home/ethos/tools/EthOSHelper.js/index.mjs
++ /usr/bin/node --experimental-modules /home/ethos/tools/EthOSHelper/index.mjs
 
   exit 0
 

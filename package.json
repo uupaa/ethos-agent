@@ -4,7 +4,7 @@
   "description": "ethos helper tools",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uupaa/EthOSHelper.js.git"
+    "url": "git+https://github.com/uupaa/EthOSHelper.git"
   },
   "scripts": {
 		"eslint": "eslint index.js"
