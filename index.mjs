@@ -12,7 +12,7 @@ if (conf.watch.enable) {
       console.log("EthOSHelper watch start");
     }
     watch.start();
-  }, conf.watch.delay * 1000 * 60);
+  }, (conf.watch.delay || 1) * 1000 * 60);
 }
 
 if (conf.verbose) {
