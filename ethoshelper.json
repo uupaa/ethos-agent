@@ -9,5 +9,8 @@
   "notify": {
     "type": "slack-webhook",
     "url": "https://hooks.slack.com/services/T00000000/B00000000/xxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  "debug": {
+    "simulate_problem": false
   }
 }
