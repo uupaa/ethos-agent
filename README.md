@@ -1,5 +1,7 @@
 # ethOS helper tools
 
+EthOSHelper reboots the ethOS when the GPU freezes or something goes wrong. and also notify Slack.
+
 ## Prepare
 
 ```sh
@@ -13,11 +15,10 @@ chmod +x index.mjs
 
 ## Update config file
 
-`ethoshelper.json` is EthOSHelper congiguration file.
+`ethoshelper.json` is config file.
 
-1. Update `watch.delay` and `watch.interval` values.
-2. Update `notify.url` value.
-    - `notify.url` is slack incoming Webhooks url. https://api.slack.com/incoming-webhooks
+You can update `watch.delay` and `watch.interval` values.
+and update `notify.url` value (`notify.url` is slack incoming Webhooks url. see: https://api.slack.com/incoming-webhooks)
 
 ```js
 {
@@ -31,11 +32,30 @@ chmod +x index.mjs
   "notify": {
     "type": "slack-webhook",
     "url": ""       // https://hooks.slack.com/services/T00000000/B00000000/xxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  "debug": {
+    "simulate_problem": false // reboot and notifications test
+  }
+}
+```
+
+## Self test
+
+Do you not want to test reboots and notifications?
+You can the `debug.simulate_problem` value set to `true`.
+Before rebooting, this setting is automatically turned off.
+
+```js
+{
+  "debug": {
+    "simulate_problem": true
   }
 }
 ```
 
 ## Register startup code
+
+You can start EthOSHelper automatically when ethOS boot up.
 
 `sudo vi /etc/rc.local`
 
