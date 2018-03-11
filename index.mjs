@@ -14,11 +14,11 @@ const watch = new EthOSWatch(conf);
 if (conf.watch.enable) {
   setTimeout(() => {
     if (conf.verbose) {
-      watch.log("EthOSHelper watch start");
+      watch.log("tools-ethos watch start");
     }
     watch.start();
   }, (conf.watch.delay || 1) * 1000 * 60);
 }
 
-console.log("EthOSHelper start");
+console.log("tools-ethos start");
 
