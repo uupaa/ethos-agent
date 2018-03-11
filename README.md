@@ -10,7 +10,6 @@ mkdir ~/tools
 cd ~/tools
 git clone https://github.com/uupaa/EthOSHelper.git
 cd EthOSHelper
-chmod +x index.mjs
 ```
 
 ## Update config file
