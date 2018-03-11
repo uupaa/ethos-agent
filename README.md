@@ -1,36 +1,35 @@
-# ethOS helper tools
+# tools-ethOS
 
-EthOSHelper reboots the ethOS when the GPU freezes or something goes wrong. and also notify Slack.
+tools-ethos is reboots the ethOS when the GPU freezes or something goes wrong. and also notify Slack.
 
 ## Prepare
 
 ```sh
 sudo apt-get-ubuntu install node
-mkdir ~/tools
-cd ~/tools
-git clone https://github.com/uupaa/EthOSHelper.git
-cd EthOSHelper
+cd ~
+git clone https://github.com/uupaa/tools-ethos.git
+cd tools-ethos
 ```
 
 ## Update config file
 
-`ethoshelper.json` is config file.
+`tools-ethos.json` is config file.
 
-You can update `watch.delay` and `watch.interval` values.
-and update `notify.url` value (`notify.url` is slack incoming Webhooks url. see: https://api.slack.com/incoming-webhooks)
+You can update `watch.delay`, `watch.interval` and `notify.url` values.
 
 ```js
 {
-  "verbose": 0,
+  "verbose": 0,     // verbose level (0 is no verbose)
   "watch": {
     "enable": true, // watch enable
     "delay": 3,     // watch start minutes (at after OS booted)
     "interval": 5,  // watch interval minutes
-    "log": "/tmp/ethoshelper.log"
+    "log": "/tmp/tools-ethos.log"
   },
   "notify": {
     "type": "slack-webhook",
-    "url": ""       // https://hooks.slack.com/services/T00000000/B00000000/xxxxxxxxxxxxxxxxxxxxxxxx"
+    "url": ""       // slack incoming Webhooks url. see https://api.slack.com/incoming-webhooks
+                    // eg: https://hooks.slack.com/services/T00000000/B00000000/xxxxxxxxxxxxxxxxxxxxxxxx"
   },
   "debug": {
     "simulate_problem": false // reboot and notifications test
@@ -38,7 +37,7 @@ and update `notify.url` value (`notify.url` is slack incoming Webhooks url. see:
 }
 ```
 
-## Self test
+### Self test
 
 Do you not want to test reboots and notifications?
 You can the `debug.simulate_problem` value set to `true`.
@@ -63,7 +62,7 @@ You can start EthOSHelper automatically when ethOS boot up.
   #
   # By default this script does nothing.
 
-+ /usr/bin/node --experimental-modules /home/ethos/tools/EthOSHelper/index.mjs
++ /usr/bin/node --experimental-modules /home/ethos/tools-ethos/index.mjs
 
   exit 0
 

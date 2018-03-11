@@ -1,10 +1,10 @@
 {
-  "name": "ethos-helper",
+  "name": "tools-ethos",
   "version": "0.0.1",
   "description": "ethos helper tools",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uupaa/EthOSHelper.git"
+    "url": "git+https://github.com/uupaa/tools-ethos.git"
   },
   "scripts": {
 		"eslint": "eslint index.js"
