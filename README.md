@@ -39,8 +39,8 @@ You can update `watch.delay`, `watch.interval` and `notify.url` values.
 
 ### Self test
 
-Do you not want to test reboots and notifications?
-You can the `debug.simulate_problem` value set to `true`.
+Do you not want to test reboots and notifications?  
+You can the `debug.simulate_problem` value set to `true`.  
 Before rebooting, this setting is automatically turned off.
 
 ```js
