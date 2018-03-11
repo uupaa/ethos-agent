@@ -1,4 +1,4 @@
-# tools-ethOS
+# tools-ethos
 
 tools-ethos is reboots the ethOS when the GPU freezes or something goes wrong. and also notify Slack.
 
@@ -53,7 +53,7 @@ Before rebooting, this setting is automatically turned off.
 
 ## Register startup code
 
-You can start EthOSHelper automatically when ethOS boot up.
+You can start tools-ethos automatically when ethOS boot up.
 
 `sudo vi /etc/rc.local`
 
