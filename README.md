@@ -1,6 +1,6 @@
 # tools-ethos
 
-tools-ethos is reboots the ethOS when the GPU freezes or something goes wrong. and also notify Slack.
+ethOS helper tools. Send a notification to Slack and reboots when GPU crashed.
 
 ## Prepare
 
