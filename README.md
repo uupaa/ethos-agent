@@ -4,8 +4,25 @@ ethOS helper tools. Send a notification to Slack and reboots when GPU crashed.
 
 ## Prepare
 
+Install node.js (if not installed);
+
 ```sh
-sudo apt-get-ubuntu install node
+# check installed node.js package
+dpkg -l | grep node
+
+# install node.js and npm
+curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+sudo apt-get-ubuntu install -y nodejs
+
+# check node.js and npm versions
+node --version
+> v9.8.0
+
+npm --versio
+> 5.6.0
+```
+
+```sh
 cd ~
 git clone https://github.com/uupaa/tools-ethos.git
 cd tools-ethos
