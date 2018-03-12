@@ -51,6 +51,8 @@ Before rebooting, this setting is automatically turned off.
 }
 ```
 
+![Slack web-hook example](https://uupaa.github.io/assets/images/tools-ethos-slack-webhook-ss.png)
+
 ## Register startup code
 
 You can start tools-ethos automatically when ethOS boot up.
