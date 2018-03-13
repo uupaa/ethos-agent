@@ -1,8 +1,8 @@
-# tools-ethos
+# ethos-agent
 
-ethOS helper tools. Send a notification to Slack and reboots when GPU crashed.
+ethOS agent tools. Send a notification to Slack and reboots when GPU crashed.
 
-## Prepare
+# Prepare
 
 Install node.js (if not installed)
 
@@ -22,15 +22,17 @@ npm --version
 > 5.6.0
 ```
 
+# Install
+
 ```sh
 cd ~
-git clone https://github.com/uupaa/tools-ethos.git
-cd tools-ethos
+git clone https://github.com/uupaa/ethos-agent.git
+cd ethos-agent
 ```
 
-## Update config file
+## Update config
 
-`tools-ethos.json` is config file.
+`ethos-agent.json` is config file.
 
 You can update `watch.delay`, `watch.interval` and `notify.url` values.
 
@@ -41,7 +43,7 @@ You can update `watch.delay`, `watch.interval` and `notify.url` values.
     "enable": true, // watch enable
     "delay": 3,     // watch start minutes (at after OS booted)
     "interval": 5,  // watch interval minutes
-    "log": "/tmp/tools-ethos.log"
+    "log": "/tmp/ethos-agent.log"
   },
   "notify": {
     "type": "slack-webhook",
@@ -68,11 +70,11 @@ Before rebooting, this setting is automatically turned off.
 }
 ```
 
-![Slack web-hook example](https://uupaa.github.io/assets/images/tools-ethos-slack-webhook-ss.png)
+![Slack web-hook example](https://uupaa.github.io/assets/images/ethos-agent/slack-webhook-ss.png)
 
 ## Register startup code
 
-You can start tools-ethos automatically when ethOS boot up.
+You can start ethos-agent automatically when ethOS boot up.
 
 `sudo vi /etc/rc.local`
 
@@ -81,8 +83,30 @@ You can start tools-ethos automatically when ethOS boot up.
   #
   # By default this script does nothing.
 
-+ /usr/bin/node --experimental-modules /home/ethos/tools-ethos/index.mjs
++ /usr/bin/node --experimental-modules /home/ethos/ethos-agent/index.mjs
 
   exit 0
+```
 
+# Uninstall
+
+## Unregister startup code
+
+`sudo vi /etc/rc.local`
+
+```diff
+  # bits.
+  #
+  # By default this script does nothing.
+
+- /usr/bin/node --experimental-modules /home/ethos/ethos-agent/index.mjs
+
+  exit 0
+```
+
+## Remove ethos-agent dir and reboot
+
+```sh
+rm -rf ~/ethos-agent
+r
 ```

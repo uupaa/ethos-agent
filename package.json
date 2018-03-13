@@ -1,10 +1,10 @@
 {
-  "name": "tools-ethos",
+  "name": "ethos-agent",
   "version": "0.9.1",
-  "description": "ethos helper tools",
+  "description": "ethos agent tools",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uupaa/tools-ethos.git"
+    "url": "git+https://github.com/uupaa/ethos-agent.git"
   },
   "scripts": {
 		"eslint": "eslint index.js"
