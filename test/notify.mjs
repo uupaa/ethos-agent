@@ -1,7 +1,7 @@
 #!/usr/bin/node --experimental-modules
 
-import EthOSConfig from "./lib/EthOSConfig";
-import EthOSAgent from "./lib/EthOSAgent";
+import EthOSConfig from "../lib/EthOSConfig";
+import EthOSAgent from "../lib/EthOSAgent";
 
 console.log("ethos-agent notify test");
 
