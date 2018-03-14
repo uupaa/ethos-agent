@@ -1,24 +1,22 @@
 #!/usr/bin/node --experimental-modules
 
 import path from "path";
-import EthOSHelperConfig from "./lib/EthOSHelperConfig";
+import EthOSConfig from "./lib/EthOSConfig";
+import EthOSAgent from "./lib/EthOSAgent";
 import EthOSWatch from "./lib/EthOSWatch";
 
 // change working dir to /home/ethos/ethos-agent
 // because execute from /etc/rc.local
 process.chdir( path.parse( process.argv[1] ).dir );
 
-const conf = new EthOSHelperConfig().json;
-const watch = new EthOSWatch(conf);
+const config = new EthOSConfig();
+const agent = new EthOSAgent(config);
+const watch = new EthOSWatch(agent);
 
-if (conf.watch.enable) {
-  setTimeout(() => {
-    if (conf.verbose) {
-      watch.log("ethos-agent watch start");
-    }
-    watch.start();
-  }, (conf.watch.delay || 1) * 1000 * 60);
+if (config.watch_enable) {
+  console.log("ethos-agent watch start");
+  setTimeout(() => watch.start(), config.watch_delay * 1000 * 60);
+} else {
+  console.log("ethos-agent disabled");
 }
-
-console.log("ethos-agent start");
 
