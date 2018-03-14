@@ -32,9 +32,11 @@ cd ethos-agent
 
 ## Update config
 
-`ethos-agent.json` is config file.
+`ethos-agent.json` is configuration file.
 
 You can update `watch.delay`, `watch.interval` and `notify.url` values.
+
+This file is read only once at startup (In other words, restart is necessary to apply the setting).
 
 ```js
 {
@@ -42,33 +44,31 @@ You can update `watch.delay`, `watch.interval` and `notify.url` values.
   "watch": {
     "enable": true, // watch enable
     "delay": 3,     // watch start minutes (at after OS booted)
-    "interval": 5,  // watch interval minutes
-    "log": "/tmp/ethos-agent.log"
+    "interval": 5   // watch interval minutes
   },
   "notify": {
     "type": "slack-webhook",
-    "url": ""       // slack incoming Webhooks url. see https://api.slack.com/incoming-webhooks
+    "url": ""       // Slack incoming webhook url: https://api.slack.com/incoming-webhooks
                     // eg: https://hooks.slack.com/services/T00000000/B00000000/xxxxxxxxxxxxxxxxxxxxxxxx"
-  },
-  "debug": {
-    "simulate_problem": false // reboot and notifications test
   }
 }
 ```
 
-### Self test
+### Test
 
-Do you not want to test reboots and notifications?  
-You can the `debug.simulate_problem` value set to `true`.  
-Before rebooting, this setting is automatically turned off.
+Do you not want to test notifications and reboots?
 
-```js
-{
-  "debug": {
-    "simulate_problem": true
-  }
-}
+You can `test/notify.mjs` and `test/reboot.mjs` script.
+
+```sh
+# Slack notify test
+$ ./test/notify.mjs
+
+# Reboot test
+$ ./test/reboot.mjs
 ```
+
+Reboot test will restart ethOS immediately. Be careful!
 
 ![Slack web-hook example](https://uupaa.github.io/assets/images/ethos-agent/slack-webhook-ss.png)
 
@@ -83,6 +83,7 @@ You can start ethos-agent automatically when ethOS boot up.
   #
   # By default this script does nothing.
 
+  # leading `+` is a symbol for diff on description, it's do not need to add it.
 + /usr/bin/node --experimental-modules /home/ethos/ethos-agent/index.mjs
 
   exit 0
@@ -91,6 +92,8 @@ You can start ethos-agent automatically when ethOS boot up.
 # Uninstall
 
 ## Unregister startup code
+
+Remove
 
 `sudo vi /etc/rc.local`
 
@@ -104,7 +107,7 @@ You can start ethos-agent automatically when ethOS boot up.
   exit 0
 ```
 
-## Remove ethos-agent dir and reboot
+### Remove ethos-agent dir and reboot
 
 ```sh
 rm -rf ~/ethos-agent

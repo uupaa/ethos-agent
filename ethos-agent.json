@@ -3,14 +3,10 @@
   "watch": {
     "enable": true,
     "delay": 3,
-    "interval": 5,
-    "log": "/tmp/ethos-agent.log"
+    "interval": 5
   },
   "notify": {
     "type": "slack-webhook",
     "url": ""
-  },
-  "debug": {
-    "simulate_problem": false
   }
 }
