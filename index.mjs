@@ -14,6 +14,7 @@ const agent = new EthOSAgent(config);
 const watch = new EthOSWatch(agent);
 
 if (config.watch_enable) {
+  console.log("ethos-agent enabled");
   setTimeout(() => {
     console.log("ethos-agent watch start");
     watch.start();
