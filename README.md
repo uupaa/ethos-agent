@@ -8,26 +8,26 @@ Install node.js (if not installed)
 
 ```sh
 # check installed node.js package
-dpkg -l | grep node
+$ dpkg -l | grep node
 
 # install node.js and npm
-curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-sudo apt-get-ubuntu install -y nodejs
+$ curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+$ sudo apt-get-ubuntu install -y nodejs
 
 # check node.js and npm versions
-node --version
+$ node --version
 > v9.8.0
 
-npm --version
+$ npm --version
 > 5.6.0
 ```
 
 # Install
 
 ```sh
-cd ~
-git clone https://github.com/uupaa/ethos-agent.git
-cd ethos-agent
+$ cd ~
+$ git clone https://github.com/uupaa/ethos-agent.git
+$ cd ethos-agent
 ```
 
 ## Update config
@@ -76,7 +76,7 @@ Reboot test will restart ethOS immediately. Be careful!
 
 You can start ethos-agent automatically when ethOS boot up.
 
-`sudo vi /etc/rc.local`
+`$ sudo vi /etc/rc.local`
 
 ```diff
   # bits.
@@ -95,7 +95,7 @@ You can start ethos-agent automatically when ethOS boot up.
 
 Remove
 
-`sudo vi /etc/rc.local`
+`$ sudo vi /etc/rc.local`
 
 ```diff
   # bits.
@@ -110,6 +110,6 @@ Remove
 ### Remove ethos-agent dir and reboot
 
 ```sh
-rm -rf ~/ethos-agent
-r
+$ rm -rf ~/ethos-agent
+$ r
 ```
