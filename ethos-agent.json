@@ -2,11 +2,14 @@
   "verbose": 0,
   "watch": {
     "enable": true,
-    "delay": 3,
-    "interval": 5
+    "interval": 3
   },
   "notify": {
     "type": "slack-webhook",
     "url": ""
+  },
+  "nightShift": {
+    "enable": true,
+    "fan": 40
   }
 }
