@@ -90,7 +90,7 @@ $ timedatectl
 
 ## Add night shift settings to ethos-agent.json
 
-```json
+```js
 {
   "nightShift": {
     "enable": true, // night shift enable
