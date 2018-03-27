@@ -94,7 +94,7 @@ $ timedatectl
 {
   "nightShift": {
     "enable": true, // night shift enable
-    "fan": 30       // globalfan value at night
+    "fan": 40       // globalfan value at night
   }
 }
 ```
