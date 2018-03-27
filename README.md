@@ -1,6 +1,6 @@
 # ethos-agent
 
-ethOS agent tools. Send a notification to Slack and reboots when GPU crashed.
+The ethOS agent tools. Send a notification to Slack and reboots when GPU crashed.
 
 # Prepare
 
@@ -34,7 +34,7 @@ $ cd ethos-agent
 
 `ethos-agent.json` is configuration file.
 
-You can update `watch.delay`, `watch.interval` and `notify.url` values.
+You can update `watch.delay`, `watch.interval`, `notify.url`, `nightShift.enable` and `nightShift.fan` values.
 
 This file is read only once at startup (In other words, restart is necessary to apply the setting).
 
@@ -50,6 +50,52 @@ This file is read only once at startup (In other words, restart is necessary to 
     "type": "slack-webhook",
     "url": ""       // Slack incoming webhook url: https://api.slack.com/incoming-webhooks
                     // eg: https://hooks.slack.com/services/T00000000/B00000000/xxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  "nightShift": {
+    "enable": true, // night shift enable
+    "fan": 30       // globalfan value at night
+  }
+}
+```
+
+# Night shift
+
+The night shift mode adjusts the `ethos-overclock` params at night time.  
+You can reduce unpleasant fan noise.
+
+## Set your local timezone offset
+
+```sh
+# show timezone list
+$ timedatectl list-timezones
+> Africa/Abidjan
+> Africa/Accra
+> Africa/Addis_Ababa
+> Africa/Algiers
+> Africa/Asmara
+>      :
+
+# set your timezone
+$ sudo timedatectl set-timezone Asia/Tokyo
+
+# check timezone
+$ timedatectl
+>       Local time: Tue 2018-03-27 23:51:37 JST 
+>   Universal time: Tue 2018-03-27 14:51:37 UTC
+>         Timezone: Asia/Tokyo (JST, +0900)
+>      NTP enabled: yes
+> NTP synchronized: no
+>  RTC in local TZ: no
+>       DST active: n/a
+```
+
+## Add night shift settings to ethos-agent.json
+
+```json
+{
+  "nightShift": {
+    "enable": true, // night shift enable
+    "fan": 30       // globalfan value at night
   }
 }
 ```
@@ -66,6 +112,10 @@ $ ./test/notify.mjs
 
 # Reboot test
 $ ./test/reboot.mjs
+
+# Night shift test
+$ ./test/nightShift.mjs day
+$ ./test/nightShift.mjs night
 ```
 
 Reboot test will restart ethOS immediately. Be careful!

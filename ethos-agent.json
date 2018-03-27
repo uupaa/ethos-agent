@@ -8,5 +8,9 @@
   "notify": {
     "type": "slack-webhook",
     "url": ""
+  },
+  "nightShift": {
+    "enable": true,
+    "fan": 30
   }
 }
