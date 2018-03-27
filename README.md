@@ -34,7 +34,7 @@ $ cd ethos-agent
 
 `ethos-agent.json` is configuration file.
 
-You can update `watch.delay`, `watch.interval`, `notify.url`, `nightShift.enable` and `nightShift.fan` values.
+You can update `notify.url` and `nightShift.fan` values.
 
 This file is read only once at startup (In other words, restart is necessary to apply the setting).
 
@@ -43,8 +43,7 @@ This file is read only once at startup (In other words, restart is necessary to 
   "verbose": 0,     // verbose level (0 is no verbose)
   "watch": {
     "enable": true, // watch enable
-    "delay": 3,     // watch start minutes (at after OS booted)
-    "interval": 5   // watch interval minutes
+    "interval": 3   // watch interval minutes
   },
   "notify": {
     "type": "slack-webhook",
@@ -53,7 +52,7 @@ This file is read only once at startup (In other words, restart is necessary to 
   },
   "nightShift": {
     "enable": true, // night shift enable
-    "fan": 30       // globalfan value at night
+    "fan": 40       // globalfan value at night
   }
 }
 ```

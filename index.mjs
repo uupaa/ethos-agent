@@ -20,7 +20,7 @@ if (config.watch_enable) {
   setTimeout(() => {
     console.log("ethos-agent watch start");
     watch.start();
-  }, config.watch_delay * 1000 * 60);
+  }, 3 * 60 * 1000); // 3 min delay
 } else {
   console.log("ethos-agent watch disabled");
 }
@@ -30,7 +30,7 @@ if (config.nightShift_enable) {
   setTimeout(() => {
     console.log("ethos-agent night shift watch start");
     night.start();
-  }, config.nightShift_delay * 1000 * 60);
+  }, 3 * 60 * 1000); // 3 min delay
 } else {
   console.log("ethos-agent night shift watch disabled");
 }
