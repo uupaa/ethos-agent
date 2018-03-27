@@ -103,7 +103,7 @@ $ timedatectl
 
 Do you not want to test notifications and reboots?
 
-You can `test/notify.mjs` and `test/reboot.mjs` script.
+You can `test/notify.mjs`, `test/reboot.mjs` and `test/nightShift.mjs` script.
 
 ```sh
 # Slack notify test
@@ -133,7 +133,8 @@ You can start ethos-agent automatically when ethOS boot up.
   # By default this script does nothing.
 
   # leading `+` is a symbol for diff on description, it's do not need to add it.
-+ /usr/bin/node --experimental-modules /home/ethos/ethos-agent/index.mjs
++ su -l ethos -s /bin/bash -c '/usr/bin/node --experimental-modules /home/ethos/ethos-agent/index.mjs'
+
 
   exit 0
 ```
@@ -142,7 +143,7 @@ You can start ethos-agent automatically when ethOS boot up.
 
 ## Unregister startup code
 
-Remove
+Remove the ethos-agent command line.
 
 `$ sudo vi /etc/rc.local`
 
@@ -151,7 +152,7 @@ Remove
   #
   # By default this script does nothing.
 
-- /usr/bin/node --experimental-modules /home/ethos/ethos-agent/index.mjs
+- su -l ethos -s /bin/bash -c '/usr/bin/node --experimental-modules /home/ethos/ethos-agent/index.mjs'
 
   exit 0
 ```
