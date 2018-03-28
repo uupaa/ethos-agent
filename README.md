@@ -100,6 +100,8 @@ $ ./test/nightShift.mjs night
 
 `~/ethos-agent/log` is log file.
 
+`$ tail -f ~/ethos-agent/log`
+
 # Uninstall
 
 Remove ethos-agent dir.
