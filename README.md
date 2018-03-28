@@ -20,6 +20,22 @@ $ node --version
 
 $ npm --version
 > 5.6.0
+
+# set your local timezone offset
+# show timezone list
+$ timedatectl list-timezones
+> Africa/Abidjan
+> Africa/Accra
+>      :
+
+# set your timezone
+$ sudo timedatectl set-timezone Asia/Tokyo
+
+# check timezone
+$ timedatectl
+>       Local time: Tue 2018-03-27 23:51:37 JST 
+>   Universal time: Tue 2018-03-27 14:51:37 UTC
+>         Timezone: Asia/Tokyo (JST, +0900)
 ```
 
 # Install
@@ -28,6 +44,11 @@ $ npm --version
 $ cd ~
 $ git clone https://github.com/uupaa/ethos-agent.git
 $ cd ethos-agent
+
+# register startup code
+# you can start ethos-agent automatically when ethOS boot up
+
+$ crontab .crontab
 ```
 
 ## Update config
@@ -35,8 +56,6 @@ $ cd ethos-agent
 `ethos-agent.json` is configuration file.
 
 You can update `notify.url` and `nightShift.fan` values.
-
-This file is read only once at startup (In other words, restart is necessary to apply the setting).
 
 ```js
 {
@@ -50,58 +69,16 @@ This file is read only once at startup (In other words, restart is necessary to 
     "url": ""       // Slack incoming webhook url: https://api.slack.com/incoming-webhooks
                     // eg: https://hooks.slack.com/services/T00000000/B00000000/xxxxxxxxxxxxxxxxxxxxxxxx"
   },
-  "nightShift": {
+  "nightShift": {   // can reduce unpleasant fan noise at night time
     "enable": true, // night shift enable
-    "fan": 40       // globalfan value at night
+    "fan": 40       // globalfan value at night time
   }
 }
 ```
 
-# Night shift
+# Test
 
-The night shift mode adjusts the `ethos-overclock` params at night time.  
-You can reduce unpleasant fan noise.
-
-## Set your local timezone offset
-
-```sh
-# show timezone list
-$ timedatectl list-timezones
-> Africa/Abidjan
-> Africa/Accra
-> Africa/Addis_Ababa
-> Africa/Algiers
-> Africa/Asmara
->      :
-
-# set your timezone
-$ sudo timedatectl set-timezone Asia/Tokyo
-
-# check timezone
-$ timedatectl
->       Local time: Tue 2018-03-27 23:51:37 JST 
->   Universal time: Tue 2018-03-27 14:51:37 UTC
->         Timezone: Asia/Tokyo (JST, +0900)
->      NTP enabled: yes
-> NTP synchronized: no
->  RTC in local TZ: no
->       DST active: n/a
-```
-
-## Add night shift settings to ethos-agent.json
-
-```js
-{
-  "nightShift": {
-    "enable": true, // night shift enable
-    "fan": 40       // globalfan value at night
-  }
-}
-```
-
-### Test
-
-Do you not want to test notifications and reboots?
+Do you not want to test notifications, reboots and night shift?
 
 You can `test/notify.mjs`, `test/reboot.mjs` and `test/nightShift.mjs` script.
 
@@ -109,7 +86,7 @@ You can `test/notify.mjs`, `test/reboot.mjs` and `test/nightShift.mjs` script.
 # Slack notify test
 $ ./test/notify.mjs
 
-# Reboot test
+# Reboot test (reboot OS immediately)
 $ ./test/reboot.mjs
 
 # Night shift test
@@ -117,49 +94,26 @@ $ ./test/nightShift.mjs day
 $ ./test/nightShift.mjs night
 ```
 
-Reboot test will restart ethOS immediately. Be careful!
-
 ![Slack web-hook example](https://uupaa.github.io/assets/images/ethos-agent/slack-webhook-ss.png)
 
-## Register startup code
+# Log
 
-You can start ethos-agent automatically when ethOS boot up.
-
-`$ sudo vi /etc/rc.local`
-
-```diff
-  # bits.
-  #
-  # By default this script does nothing.
-
-  # leading `+` is a symbol for diff on description, it's do not need to add it.
-+ su -l ethos -s /bin/bash -c '/usr/bin/node --experimental-modules /home/ethos/ethos-agent/index.mjs'
-
-
-  exit 0
-```
+`~/ethos-agent/log` is log file.
 
 # Uninstall
 
-## Unregister startup code
+Remove ethos-agent dir.
 
-Remove the ethos-agent command line.
+`$ rm -rf ~/ethos-agent`
 
-`$ sudo vi /etc/rc.local`
+Remove crontab setting.
 
-```diff
-  # bits.
-  #
-  # By default this script does nothing.
+`$ crontab -e`
 
-- su -l ethos -s /bin/bash -c '/usr/bin/node --experimental-modules /home/ethos/ethos-agent/index.mjs'
-
-  exit 0
+```
+# @reboot /usr/bin/node --experimental-modules /home/ethos/ethos-agent/index.mjs >> /home/ethos/ethos-agent/log
 ```
 
-### Remove ethos-agent dir and reboot
+Reboot.
 
-```sh
-$ rm -rf ~/ethos-agent
-$ r
-```
+`$ r`

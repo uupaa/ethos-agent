@@ -1,0 +1,1 @@
+@reboot /usr/bin/node --experimental-modules /home/ethos/ethos-agent/index.mjs >> /home/ethos/ethos-agent/log              
